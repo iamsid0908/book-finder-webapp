@@ -56,7 +56,7 @@ function Home() {
     ["posts", { searchValue }],
     () => fetchPosts(searchValue),
     {
-      staleTime: Infinity,
+      // staleTime: Infinity,
       // enabled: false,
     }
   );

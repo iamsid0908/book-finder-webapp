@@ -46,7 +46,9 @@ function Primary() {
     data: userData,
     error: userError,
     isLoading: userLoading,
-  } = useQuery("user", fetchUser, { staleTime: Infinity });
+  } = useQuery("user", fetchUser, {
+    // staleTime: Infinity
+  });
 
   const {
     data: wishListData,

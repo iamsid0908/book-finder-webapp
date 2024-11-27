@@ -24,7 +24,7 @@ function Bookdetails() {
     () => fetchBookDetails(params.id),
     {
       enabled: !!params.id,
-      staleTime: Infinity,
+      // staleTime: Infinity,
     }
   );
   if (isLoading)

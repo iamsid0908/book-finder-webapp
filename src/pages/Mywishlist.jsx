@@ -45,7 +45,7 @@ const deleteFromWishList = async (bookId) => {
 function Mywishlist() {
   const queryClient = useQueryClient();
   const { data, error, isLoading } = useQuery("wish", fetchWishList, {
-    staleTime: Infinity,
+    // staleTime: Infinity,
   });
   const wishlistMutation = useMutation(deleteFromWishList, {
     onSuccess: () => {
