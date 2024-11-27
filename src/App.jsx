@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Bookdetails from "./pages/Bookdetails";
 import Primary from "./pages/Primary";
 import Mywishlist from "./pages/Mywishlist";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -14,11 +15,12 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route path="/" element={<Primary />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/primary" element={<Primary />} />
+            <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/book-details/:id" element={<Bookdetails />} />
             <Route path="/wish-list" element={<Mywishlist />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>

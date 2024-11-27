@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Toaster, toast } from "alert";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(1);
   const user = { name, email, password, role };
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ function Register() {
       .then((data) => {
         if (data.message) {
           toast(data.message);
+          navigate("/");
         } else {
           toast("Something went wrong!");
         }
@@ -104,7 +107,7 @@ function Register() {
         </form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-600 hover:underline">
+          <a href="/" className="text-indigo-600 hover:underline">
             Login here
           </a>
         </p>

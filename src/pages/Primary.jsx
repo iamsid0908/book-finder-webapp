@@ -57,7 +57,7 @@ function Primary() {
   const handleLogout = (e) => {
     localStorage.removeItem("Bearer");
     localStorage.removeItem("user_id");
-    navigate("/login");
+    navigate("/");
   };
   if (userLoading || wishListLoading) return <div>Loading...</div>;
   // Handle errors

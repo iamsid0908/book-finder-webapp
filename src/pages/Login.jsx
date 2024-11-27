@@ -26,7 +26,7 @@ function Login() {
           localStorage.setItem("Bearer", data.data.token);
           localStorage.setItem("user_id", data.data.id);
           toast(data.message);
-          navigate("/");
+          navigate("/primary");
         } else {
           toast("Something went wrong!");
         }
