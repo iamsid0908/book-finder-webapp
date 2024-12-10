@@ -27,14 +27,12 @@ const fetchPosts = async (searchValue = "") => {
       },
     }
   );
-  console.log(response.data);
   return response.data;
 };
 
 const addToWishlist = async (bookId) => {
   parseInt(bookId);
   const book_id = bookId;
-  console.log(typeof bookId);
   const token = localStorage.getItem("Bearer");
   const response = await axios.post(
     import.meta.env.VITE_BACKEND_BASE_URL + "/cart/insert",
@@ -67,9 +65,6 @@ function Home() {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occurred: {error.message}</div>;
-
   const handleWishlist = (e, bookId) => {
     e.preventDefault();
     wishlistMutation.mutate(bookId);
@@ -79,6 +74,8 @@ function Home() {
     setSearchValue(searchValue1);
     refetch();
   };
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error occurred: {error.message}</div>;
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Book List</h1>

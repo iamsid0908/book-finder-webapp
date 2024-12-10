@@ -82,18 +82,14 @@ function Bookdetails() {
       <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 mb-6">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">Tags</h2>
         <div className="flex flex-wrap gap-2">
-          <span className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
-            Habits
-          </span>
-          <span className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
-            Productivity
-          </span>
-          <span className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
-            Self-Help
-          </span>
-          <span className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
-            Motivation
-          </span>
+          {data.data.category.split(",").map((tag, index) => (
+            <span
+              key={index}
+              className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full"
+            >
+              {tag.trim()}
+            </span>
+          ))}
         </div>
       </div>
 
