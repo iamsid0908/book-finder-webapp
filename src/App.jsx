@@ -7,6 +7,7 @@ import Bookdetails from "./pages/Bookdetails";
 import Primary from "./pages/Primary";
 import Mywishlist from "./pages/Mywishlist";
 import NotFound from "./pages/NotFound";
+import PrimaryNew from "./pages/PrimaryNew";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/book-details/:id" element={<Bookdetails />} />
             <Route path="/wish-list" element={<Mywishlist />} />
+
+            {/* New components */}
+            <Route path="/primary-new" element={<PrimaryNew/>} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
