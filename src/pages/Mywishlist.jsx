@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"; // ✅ Correct import
 import axios from "axios";
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
@@ -18,9 +18,7 @@ const fetchWishList = async () => {
   const response = await axios.get(
     import.meta.env.VITE_BACKEND_BASE_URL + "/cart/get-cart",
     {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     }
   );
   return response.data;
@@ -29,13 +27,10 @@ const fetchWishList = async () => {
 const deleteFromWishList = async (bookId) => {
   parseInt(bookId);
   const book_id = bookId;
-  const token = localStorage.getItem("Bearer");
   const response = await axios.delete(
     `${import.meta.env.VITE_BACKEND_BASE_URL}/cart/cart-remove`,
     {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
       data: { book_id: bookId },
     }
   );
@@ -44,12 +39,15 @@ const deleteFromWishList = async (bookId) => {
 
 function Mywishlist() {
   const queryClient = useQueryClient();
-  const { data, error, isLoading } = useQuery("wish", fetchWishList, {
-    // staleTime: Infinity,
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["wish"],
+    queryFn: fetchWishList,
   });
-  const wishlistMutation = useMutation(deleteFromWishList, {
+
+  const wishlistMutation = useMutation({
+    mutationFn: deleteFromWishList,
     onSuccess: () => {
-      queryClient.invalidateQueries("wish");
+      queryClient.invalidateQueries({ queryKey: ["wish"] });
     },
   });
 
